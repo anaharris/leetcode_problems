@@ -23,3 +23,15 @@
 # -----------------------------------------------------------------------------
 #
 # Solution:
+
+def reverse(x)
+  result = x.to_s.reverse.to_i
+    if result > 2**31 - 1
+        result =  0
+    elsif result < -2**31
+        result = 0
+    elsif x < 0
+        result = result * -1
+    end
+    result
+end
