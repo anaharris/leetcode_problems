@@ -21,5 +21,23 @@
 # Solution:
 
 def is_anagram(s, t)
+  s_hash = {}
 
+  if t.length < s.length
+    return false
+  end
+
+  s.chars.each do |letter|
+      s_hash[letter] ? s_hash[letter] += 1 : s_hash[letter] = 1
+  end
+
+  t.chars.each do |letter|
+    if s_hash[letter] && s_hash[letter] != 0
+      s_hash[letter] -= 1
+    else
+     return false
+     break
+    end
+  end
+  true
 end
