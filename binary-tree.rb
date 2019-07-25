@@ -1,3 +1,14 @@
+# Definition for a binary tree node:
+#
+# class TreeNode
+#     attr_accessor :val, :left, :right
+#     def initialize(val)
+#         @val = val
+#         @left, @right = nil, nil
+#     end
+# end
+# 
+# PROBLEMS:
 # 1. Binary Tree Preorder Traversal ()=> root, left, right)
 #
 # Given a binary tree, return the preorder traversal of its nodes' values.
@@ -161,6 +172,28 @@ def postorder_traversal(root)
     end
   end
 
-  # 
   result
+end
+
+# 4. Binary Tree Level Order Traversal (Breadth-First Search)
+#
+# Given a binary tree, return the level order traversal of its nodes' values.
+# (ie, from left to right, level by level).
+#
+# For example:
+# Given binary tree [3,9,20,null,null,15,7],
+#     3
+#    / \
+#   9  20
+#     /  \
+#    15   7
+# return its level order traversal as:
+# [
+#   [3],
+#   [9,20],
+#   [15,7]
+# ]
+
+def level_order(root)
+
 end
