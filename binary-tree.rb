@@ -7,7 +7,7 @@
 #         @left, @right = nil, nil
 #     end
 # end
-# 
+#
 # PROBLEMS:
 # 1. Binary Tree Preorder Traversal ()=> root, left, right)
 #
@@ -195,5 +195,19 @@ end
 # ]
 
 def level_order(root)
-
+  return [] if root.nil?
+  queue = [[root, 0]]
+  response = []
+  until queue.empty?
+    node, level = queue.pop
+    # level acts as a index for the response array
+    # if there's no element (array) with that index, we create it
+    response[level] ||= []
+    # if it exists, we add current node to it
+    response[level] << node.val
+    # then we add children to queue and increase the level by 1
+    queue << [node.right, level + 1] if node.right
+    queue << [node.left, level + 1] if node.left
+  end
+  response
 end
