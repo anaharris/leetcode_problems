@@ -199,6 +199,7 @@ def level_order(root)
   queue = [[root, 0]]
   response = []
   until queue.empty?
+    # node is the current node, level is the number associated with it
     node, level = queue.pop
     # level acts as a index for the response array
     # if there's no element (array) with that index, we create it
@@ -210,4 +211,31 @@ def level_order(root)
     queue << [node.left, level + 1] if node.left
   end
   response
+end
+
+# 5. Maximum Depth of Binary Tree
+#
+# Given a binary tree, find its maximum depth.
+#
+# The maximum depth is the number of nodes along the longest path from the root node down to the farthest leaf node.
+#
+# Note: A leaf is a node with no children.
+#
+# Example:
+#
+# Given binary tree [3,9,20,null,null,15,7],
+#
+#     3
+#    / \
+#   9  20
+#     /  \
+#    15   7
+# return its depth = 3.
+#
+# top-down
+def max_depth(root)
+  return 0 if root.nil?
+  left_depth = max_depth(root.left)
+  right_depth = max_depth(root.right)
+  [left_depth, right_depth].max + 1
 end
