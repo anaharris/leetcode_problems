@@ -288,8 +288,36 @@ end
 # Because nums[0] + nums[1] = 2 + 7 = 9,
 # return [0, 1].
 #
-# Solution:
+# Solution 1:
 
-def two_sum(nums)
-  
+def two_sum(nums, target)
+  map = {}
+
+  nums.each_with_index do |n, i|
+    map[i] = n
+  end
+
+  map.each do |k, v|
+    if map.key(target - v) && map.key(target - v) != v
+      return [k, map.key(target - v)]
+  end
+end
+
+# Solution 2:
+
+def two_sum(nums, target)
+  nums_hash = {}
+  nums.each_with_index do |num, i|
+    nums_hash[target-num] ? nums_hash[target-num].push(i) : nums_hash[target-num] = [i]
+  end
+
+  nums.each_with_index do |num, i|
+    if nums_hash[num] && nums_hash[num].first != i
+      if nums_hash[num].length == 2
+        return nums_hash[num]
+      else
+        return nums_hash[num].push(i)
+      end
+    end
+  end
 end
