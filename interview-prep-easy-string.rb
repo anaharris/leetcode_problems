@@ -190,5 +190,12 @@ end
 # Solution:
 
 def str_str(haystack, needle)
+  return 0 if needle.empty?
 
+  (0...haystack.length).each do |i|
+    if haystack[i..i + needle.length - 1] == needle
+      return i
+    end
+  end
+  -1
 end
