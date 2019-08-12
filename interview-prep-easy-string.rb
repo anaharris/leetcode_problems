@@ -95,3 +95,69 @@ def first_uniq_char(s)
   end
   -1
 end
+
+# 4. Valid Anagram
+#
+# Given two strings s and t , write a function to determine if t is an anagram of s.
+#
+# Example 1:
+#
+# Input: s = "anagram", t = "nagaram"
+# Output: true
+#
+# Example 2:
+#
+# Input: s = "rat", t = "car"
+# Output: false
+#
+# Note:
+# You may assume the string contains only lowercase alphabets.
+#
+# Follow up:
+# What if the inputs contain unicode characters? How would you adapt your solution to such case?
+#
+# Solution:
+
+def is_anagram(s, t)
+  return false if s.length < t.length
+  s_hash = {}
+
+  s.chars.each do |c|
+    s_hash[c] ? s_hash[c] += 1 : s_hash[c] = 1
+  end
+
+  t.chars.each do |c|
+    if s_hash[c] && s_hash[c] != 0
+      s_hash[c] -= 1
+    else
+      return false
+      break
+    end
+  end
+  true
+end
+
+# 5. Valid Palindrome
+#
+# Given a string, determine if it is a palindrome, considering only alphanumeric
+# characters and ignoring cases.
+#
+# Note: For the purpose of this problem, we define empty string as valid palindrome.
+#
+# Example 1:
+#
+# Input: "A man, a plan, a canal: Panama"
+# Output: true
+#
+# Example 2:
+#
+# Input: "race a car"
+# Output: false
+#
+# Solution:
+
+def is_palindrome(s)
+  return true if s == ''
+  new_s = s.gsub(/[^0-9A-Za-z]/, '').downcase!
+  new_s = new_s.reverse
+end
