@@ -122,3 +122,90 @@ end
 def is_symmetric(root)
 
 end
+
+# 4. Binary Tree Level Order Traversal
+#
+# Given a binary tree, return the level order traversal of its nodes' values.
+# (ie, from left to right, level by level).
+#
+# For example:
+# Given binary tree [3,9,20,null,null,15,7],
+#
+#     3
+#    / \
+#   9  20
+#     /  \
+#    15   7
+#
+# return its level order traversal as:
+#
+# [
+#   [3],
+#   [9,20],
+#   [15,7]
+# ]
+#
+# Solution:
+
+# Definition for a binary tree node.
+# class TreeNode
+#     attr_accessor :val, :left, :right
+#     def initialize(val)
+#         @val = val
+#         @left, @right = nil, nil
+#     end
+# end
+
+
+def level_order(root)
+  return [] if root.nil?
+  queue = [[root, 0]]
+  response = []
+
+  until queue.empty?
+    node, level = queue.pop
+    response[level] ||= []
+    response[level] << node.val
+    queue << [node.right, level + 1] if node.right
+    queue << [node.left, level + 1] if node.left
+  end
+
+  response
+end
+
+# 5. Convert Sorted Array to Binary Search Tree
+#
+# Given an array where elements are sorted in ascending order, convert it to a
+# height balanced BST.
+#
+# For this problem, a height-balanced binary tree is defined as a binary tree in
+# which the depth of the two subtrees of every node never differ by more than 1.
+#
+# Example:
+#
+# Given the sorted array: [-10,-3,0,5,9],
+#
+# One possible answer is: [0,-3,9,-10,null,5], which represents the following
+# height balanced BST:
+#
+#       0
+#      / \
+#    -3   9
+#    /   /
+#  -10  5
+#
+# Solution:
+
+# Definition for a binary tree node.
+# class TreeNode
+#     attr_accessor :val, :left, :right
+#     def initialize(val)
+#         @val = val
+#         @left, @right = nil, nil
+#     end
+# end
+
+
+def sorted_array_to_bst(nums)
+
+end
