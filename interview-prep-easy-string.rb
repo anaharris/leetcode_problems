@@ -199,3 +199,40 @@ def str_str(haystack, needle)
   end
   -1
 end
+
+# 7. Longest Common Prefix
+#
+# Write a function to find the longest common prefix string amongst an array of strings.
+#
+# If there is no common prefix, return an empty string "".
+#
+# Example 1:
+#
+# Input: ["flower","flow","flight"]
+# Output: "fl"
+#
+# Example 2:
+#
+# Input: ["dog","racecar","car"]
+# Output: ""
+#
+# Explanation: There is no common prefix among the input strings.
+#
+# Note:
+# All given inputs are in lowercase letters a-z.
+#
+# Solution:
+
+def longest_common_prefix(strs)
+  return '' if strs.empty? || strs.nil?
+
+  prefix = strs.min_by {|w| w.length}
+
+  strs.each do |word|
+    while word.index(prefix) != 0
+      prefix = prefix[0...prefix.length - 1]
+    end
+  end
+
+  prefix
+end
