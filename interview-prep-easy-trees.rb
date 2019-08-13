@@ -28,6 +28,9 @@
 #     end
 # end
 
-def max_depth(root)
-
+def max_depth(root)i
+  return 0 if root.nil?
+  depth_l = max_depth(root.right) + 1
+  depth_r = max_depth(root.left) + 1
+  depth_l > depth_r ? depth_l : depth_r
 end
